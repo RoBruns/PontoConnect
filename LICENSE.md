@@ -28,7 +28,7 @@ Em nenhuma circunstância o licenciante será responsável por quaisquer danos d
 Esta licença é eficaz até ser rescindida. Esta licença será automaticamente rescindida se você não cumprir qualquer termo ou condição deste acordo.
 
 ## 10. Jurisdição e Lei Aplicável
-Este acordo será regido pelas leis do [especificar jurisdição]. Qualquer disputa relacionada a este acordo será resolvida nos tribunais de [especificar localização].
+Este acordo será regido pelas leis do Direitos Autorais (Lei Nº 9.610/1998). Qualquer disputa relacionada a este acordo será resolvida nos tribunais do Brasil.
 
 ## 11. Aceitação
 Ao usar, copiar ou instalar o Software, você indica a aceitação deste acordo de licença.
