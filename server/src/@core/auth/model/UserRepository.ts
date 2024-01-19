@@ -3,5 +3,5 @@ import { User } from './User'
 
 export interface UserRepository {
     saveUser(createUserDto: CreateUserDto): Promise<User | null>
-    findUser(email: string): Promise<User | null>
+    findUser(login: string): Promise<User | null>
 }
