@@ -18,7 +18,9 @@ const config: Config = {
         green: {
           verydark: "#0A0F0C",
           dark: "#0C1710",
-          
+          primary: "#2BDA6B"
+
+
         },
       },
     },
