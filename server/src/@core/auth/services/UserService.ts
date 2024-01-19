@@ -1,4 +1,5 @@
 import { Result } from '../../error/Result'
+import { AuthErrors } from '../../error/types/AuthErrors'
 import { AuthResponseDto } from '../dtos/AuthResponseDto'
 import { CreateUserDto } from '../dtos/CreateUserDto'
 import { SignInDto } from '../dtos/SiginDto'
@@ -22,9 +23,9 @@ export class UserService implements IUserService {
         this.passwordService = passwordService
         this.tokenService = tokenService
     }
-    async siginIn(
+    async signIn(
         signInDto: SignInDto
-    ): Promise<Result<AuthResponseDto | string>> {
+    ): Promise<Result<AuthResponseDto | AuthErrors>> {
         let user: User | null = await this.userRepository.findUser(
             signInDto.login
         )
@@ -45,7 +46,7 @@ export class UserService implements IUserService {
     }
     async signUp(
         createUserDto: CreateUserDto
-    ): Promise<Result<AuthResponseDto | string>> {
+    ): Promise<Result<AuthResponseDto | AuthErrors>> {
         let user: User | null = await this.userRepository.findUser(
             createUserDto.login
         )
