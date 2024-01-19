@@ -1,16 +1,18 @@
+import { JwtPayload } from 'jsonwebtoken'
 import { ITokenService } from './ITokenService'
 import * as jwt from 'jsonwebtoken'
 
 export class TokenService implements ITokenService {
-    validateToken(token: string): boolean {
+    validateToken(token: string): string | JwtPayload {
         const decodedToken = jwt.verify(token, process.env.JWTSECRET!)
+
+        return decodedToken
     }
-    genToken(id: string, email: string, name: string): string {
+    genToken(id: string, login: string): string {
         return jwt.sign(
             {
                 id,
-                email,
-                name,
+                login,
             },
             process.env.JWTSECRET!,
             {
