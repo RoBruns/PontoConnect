@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function Header() {
     return (
         <header>
-            <div className='m-6 flex items-center'> 
+            <div className='p-6 flex items-center'> 
                 <Image
                     src="/icon.png"
                     alt="ZapBot"

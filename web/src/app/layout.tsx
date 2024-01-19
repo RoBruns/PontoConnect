@@ -25,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
-      <body className={`${notoSans.variable} ${kanit.variable} bg-green-dark`}>
+    <html lang="pt-BR" className="h-full w-full">
+      <body className={`${notoSans.variable} ${kanit.variable} bg-green-verydark w-full h-full`}>
         <Header />
         {children}
         </body>
