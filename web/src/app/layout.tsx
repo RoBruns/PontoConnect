@@ -10,7 +10,7 @@ const notoSans = Noto_Sans_Gurmukhi({
 
 const kanit = Kanit({
   subsets: ["latin"],
-  weight: ['500'],
+  weight: ["500"],
   variable: "--font-kanit",
 });
 
@@ -32,6 +32,7 @@ export default function RootLayout({
       </body>
     </html>
   );
+
 
 
 }
