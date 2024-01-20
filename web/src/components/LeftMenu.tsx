@@ -15,12 +15,13 @@ export default function LeftMenu() {
                     <p>Esquenta</p>
                 </Button>
             </div>
-            <div className="flex flex-col gap-6">
-                <div className="p-2 flex w-[100%]">
+            <div className="flex flex-col gap-6 ">
+                <div className="p-2 flex mx-3">
                     <Button className="p-4 w-full text-white bg-[#2B7362]">
                         <p>Suporte</p>
                     </Button>
                 </div>
+
                 <Button className="bg-[#2F2F2F] flex items-center justify-center gap-2 hover:bg-red-500 transition-all">
                     <p className="text-white">Sair</p>
                     <CiLogout size={20} color="#FFFFFF" />
