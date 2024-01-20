@@ -3,7 +3,7 @@ import { CiLogout } from "react-icons/ci";
 
 export default function LeftMenu() {
     return (
-        <section className="w-[20rem] h-[45rem] bg-[#1E1E1E] rounded-lg flex flex-col justify-between">
+        <section className="w-[20rem] h-[45rem] bg-[#1E1E1E] rounded-lg flex flex-col justify-between font-sans">
             <div className="flex flex-col px-2 py-6 gap-6">
                 <Button isPageSelected={true}>
                     <p>WhatsApp</p>
