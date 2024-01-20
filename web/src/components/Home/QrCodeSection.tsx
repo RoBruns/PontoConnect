@@ -6,6 +6,7 @@ import QrCodeWithNumber from "./QrCodeWithNumber";
 export function QrCodeSection() {
     const [isConnected, setIsConnected] = useState(false);
     const handleClick = () => {
+        console.log("oi");
         setIsConnected((prev) => !prev);
     };
     return (

@@ -6,7 +6,7 @@ export default function QrCodeWithNumber({
     handleClick: () => void;
 }) {
     return (
-        <div className="h-full flex gap-2 w-full">
+        <div className="h-full flex gap-2 w-full ">
             <div className="w-[60%] h-full flex flex-col justify-center items-center gap-6 bg-[#0C1710] rounded-lg">
                 <div className="w-[85%] h-[80%] bg-white"></div>
                 <Button variant="secondary" className="w-[85%] text-white ">
