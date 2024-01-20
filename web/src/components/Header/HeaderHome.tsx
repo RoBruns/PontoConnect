@@ -1,6 +1,6 @@
 import { Logo } from "../Logo";
 
-export function Header() {
+export function HeaderHome() {
     return (
         <header className="flex justify-between items-center">
             <Logo />
