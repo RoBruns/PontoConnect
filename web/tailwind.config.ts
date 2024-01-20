@@ -8,10 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: "var(--font-noto-sans)",
+        logo: "var(--font-kanit)",
+      },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      colors: {
+        green: {
+          verydark: "#0A0F0C",
+          dark: "#0C1710",
+          primary: "#2BDA6B"
+
+
+        },
       },
     },
   },
