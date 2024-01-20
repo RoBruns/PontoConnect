@@ -3,7 +3,7 @@ import { CiLogout } from "react-icons/ci";
 
 export default function LeftMenu() {
     return (
-        <section className="w-[20rem] h-[50rem] bg-[#1E1E1E] rounded-lg flex flex-col justify-between font-sans">
+        <section className="w-[20rem] flex-grow bg-[#1E1E1E] rounded-lg flex flex-col justify-between font-sans z-0">
             <div className="flex flex-col px-2 py-6 gap-6">
                 <Button variant="primary">
                     <p>WhatsApp</p>
@@ -22,7 +22,7 @@ export default function LeftMenu() {
                     </Button>
                 </div>
 
-                <Button className="bg-[#2F2F2F] flex items-center justify-center gap-2 hover:bg-red-500 transition-all">
+                <Button className="bg-[#2F2F2F] flex items-center justify-center gap-2 hover:bg-red-500 hover:scale-100 transition-all">
                     <p className="text-white">Sair</p>
                     <CiLogout size={20} color="#FFFFFF" />
                 </Button>

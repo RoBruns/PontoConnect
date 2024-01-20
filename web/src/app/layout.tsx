@@ -26,11 +26,13 @@ export default function RootLayout({
 }) {
     return (
         <html lang="pt-BR" className="h-full w-full">
-            <body
-                className={`${notoSans.variable} ${kanit.variable} font-sans bg-green-verydark w-full h-full`}
-            >
-                <Header />
-                {children}
+            <body className={`${notoSans.variable} ${kanit.variable} font-sans bg-green-verydark w-full h-full`}>
+                <div className="flex flex-col h-screen">
+                    <Header />
+                    <main className="flex-grow overflow-auto">
+                        {children}
+                    </main>
+                </div>
             </body>
         </html>
     );

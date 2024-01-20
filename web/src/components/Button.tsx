@@ -24,7 +24,7 @@ export const Button = ({
     return (
         <button
             className={twMerge(
-                `p-2 ${bg} rounded-lg font-sans h-[3.5rem]   ${className}`
+                `p-2 ${bg} rounded-lg font-sans h-[3.5rem] hover:bg-green-600 hover:scale-105 transition ease-in-out ${className}`
             )}
             {...rest}
         >

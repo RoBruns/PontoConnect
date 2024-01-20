@@ -10,7 +10,7 @@ export function QrCodeSection() {
         setIsConnected((prev) => !prev);
     };
     return (
-        <section className="w-full h-full flex justify-center">
+        <section className="w-full h-full flex justify-around">
             {isConnected ? (
                 <QrCodeWithNumber handleClick={handleClick} />
             ) : (

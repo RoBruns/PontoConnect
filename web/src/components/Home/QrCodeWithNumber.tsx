@@ -6,10 +6,10 @@ export default function QrCodeWithNumber({
     handleClick: () => void;
 }) {
     return (
-        <div className="h-full flex gap-2 w-full ">
-            <div className="w-[60%] h-full flex flex-col justify-center items-center gap-6 bg-[#0C1710] rounded-lg">
-                <div className="w-[85%] h-[80%] bg-white"></div>
-                <Button variant="secondary" className="w-[85%] text-white ">
+        <div className="h-full flex gap-6 w-full ">
+            <div className="w-[60%] h-full flex flex-col justify-center items-center gap-14 bg-[#0C1710] rounded-lg">
+                <div className="w-[65%] h-[60%] bg-white"></div>
+                <Button variant="secondary" className="w-[40%] text-white ">
                     <p>Gerar QR code novamente</p>
                 </Button>
             </div>
@@ -18,7 +18,7 @@ export default function QrCodeWithNumber({
                 <p className="p-2 bg-[#2B7345] rounded-lg w-full text-center">
                     +55 11 9XXXX-XXXX
                 </p>
-                <Button variant="red" className="w-full" onClick={handleClick}>
+                <Button variant="red" className="w-full hover:bg-red-700" onClick={handleClick}>
                     <p>Desconectar</p>
                 </Button>
             </div>
