@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import GenerateQrCode from "./GenerateQrCode";
+import { GenerateQrCode } from "./GenerateQrCode";
 import QrCodeWithNumber from "./QrCodeWithNumber";
 
 export function QrCodeSection() {
