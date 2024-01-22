@@ -87,4 +87,17 @@ export class UserService implements IUserService {
 
         return Result.ok<AuthResponseDto>({ token })
     }
+
+    async signOut(token: string): Promise<Result<void | AuthErrors>> {
+        const { id } = this.tokenService.getTokenData(token) as {
+            id: string
+            login: string
+        }
+
+        await this.cacheService.set(token, 'invalid', 'EX', 60 * 60 * 24)
+
+        await this.cacheService.del(id)
+
+        return Result.ok<void>()
+    }
 }

@@ -4,6 +4,7 @@ import { FastifyRequestType } from 'fastify/types/type-provider'
 import { CreateUserDto } from '../../@core/auth/dtos/CreateUserDto'
 import { SignInDto } from '../../@core/auth/dtos/SiginDto'
 import { authErrorStatusMap } from './authErrorStatusMap'
+import { SignOutDTO } from '../../@core/auth/dtos/SignOutDTO'
 
 export class AuthController {
     private readonly userService: IUserService
@@ -45,5 +46,23 @@ export class AuthController {
         }
 
         return res.status(200).send(userTokenOrError.getValue())
+    }
+
+    async signOut(req: FastifyRequestType, res: FastifyReply) {
+        const { token } = req.headers as SignOutDTO
+
+        const userTokenOrError = await this.userService.signOut(token as string)
+
+        if (userTokenOrError.error) {
+            const { error } = userTokenOrError
+
+            return res
+                .status(
+                    authErrorStatusMap[error as keyof typeof authErrorStatusMap]
+                )
+                .send({ message: error })
+        }
+
+        return res.status(200).send()
     }
 }
