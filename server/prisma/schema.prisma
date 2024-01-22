@@ -10,9 +10,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model PlanType {
+  type_id   String @id @default(uuid())
+  type_name String @unique
+
+  Plan Plan[]
+}
+
+model Plan {
+  plan_id         String   @id @default(uuid())
+  plan_name       String   @unique
+  plan_price      Float
+  plan_created_at DateTime @default(now())
+  type_id         String
+
+  Type PlanType @relation(fields: [type_id], references: [type_id])
+
+  User User[]
+}
+
+model Statement {
+  sta_id     String @id @default(uuid())
+  sta_amount Float
+  sta_date   DateTime
+  user_id    String
+
+  User User @relation(fields: [user_id], references: [user_id])
+}
+
 model User {
-  id          String  @id @default(uuid())
-  login       String
-  password    String
-  isAvailable Boolean
+  user_id         String   @id @default(uuid())
+  user_login      String   @unique
+  user_password   String
+  user_active     Boolean
+  user_created_at DateTime @default(now())
+  plan_id         String
+
+  Plan Plan @relation(fields: [plan_id], references: [plan_id])
+
+  Statement Statement[]
 }
