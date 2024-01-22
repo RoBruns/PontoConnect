@@ -4,6 +4,7 @@ import { FastifyRequestType } from 'fastify/types/type-provider'
 import { CreateUserDto } from '../../@core/auth/dtos/CreateUserDto'
 import { SignInDto } from '../../@core/auth/dtos/SiginDto'
 import { authErrorStatusMap } from './authErrorStatusMap'
+import { RedisService } from '../../@core/cache/RedisService'
 
 export class AuthController {
     private readonly userService: IUserService
