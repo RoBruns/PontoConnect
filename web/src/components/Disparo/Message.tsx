@@ -33,7 +33,7 @@ export default function Message() {
                     </p>
                     <p className="text-white">Mensagem:</p>
                     <textarea
-                        className="h-full w-full resize-none bg-[#BEE9CE]"
+                        className="h-full w-full resize-none bg-[#BEE9CE] rounded-sm"
                         rows={15}
                         cols={40}
                     >
