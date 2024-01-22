@@ -8,10 +8,12 @@ export class PrismaUserRepository implements UserRepository {
     async saveUser(createUserDto: CreateUserDto): Promise<User | null> {
         const user: User = await prisma.user.create({
             data: {
-                id: randomUUID(),
-                login: createUserDto.login,
-                password: createUserDto.password,
-                isAvailable: true,
+                user_id: randomUUID(),
+                user_login: createUserDto.login,
+                user_password: createUserDto.password,
+                user_active: true,
+                user_created_at: new Date(),
+                plan_id: createUserDto.plan_id,
             },
         })
 
@@ -20,7 +22,7 @@ export class PrismaUserRepository implements UserRepository {
     async findUser(login: string): Promise<User | null> {
         const user = await prisma.user.findFirst({
             where: {
-                login,
+                user_login: login,
             },
         })
 

@@ -38,13 +38,13 @@ export class UserService implements IUserService {
 
         const isPasswordMatch = await this.passwordService.comparePassword(
             signInDto.password,
-            user.password
+            user.user_password
         )
 
         if (!isPasswordMatch)
             return Result.fail<AuthResponseDto>('Senha incorreta')
 
-        const isLogged = await this.cacheService.get(user.id)
+        const isLogged = await this.cacheService.get(user.user_id)
 
         if (isLogged)
             return Result.fail<AuthResponseDto>(
@@ -52,15 +52,15 @@ export class UserService implements IUserService {
             )
 
         await this.cacheService.set(
-            user!.id,
+            user!.user_id,
             JSON.stringify({
-                id: user!.id,
-                login: user!.login,
+                id: user!.user_id,
+                login: user!.user_login,
             }),
             'EX',
             1800
         )
-        const token = this.tokenService.genToken(user.id, user.login)
+        const token = this.tokenService.genToken(user.user_id, user.user_login)
 
         return Result.ok<AuthResponseDto>({ token })
     }
@@ -80,7 +80,10 @@ export class UserService implements IUserService {
 
         user = await this.userRepository.saveUser(createUserDto)
 
-        const token = this.tokenService.genToken(user!.id, user!.login)
+        const token = this.tokenService.genToken(
+            user!.user_id,
+            user!.user_login
+        )
 
         return Result.ok<AuthResponseDto>({ token })
     }
