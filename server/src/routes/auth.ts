@@ -4,13 +4,15 @@ import { UserService } from '../@core/auth/services/UserService'
 import { PrismaUserRepository } from '../@core/auth/repos/PrismaUserRepository'
 import { PasswordService } from '../@core/auth/util/password/PasswordService'
 import { TokenService } from '../@core/auth/util/token/TokenService'
+import { RedisService } from '../@core/cache/RedisService'
 
 export async function authRoutes(app: FastifyInstance) {
     const authController = new AuthController(
         new UserService(
             new PrismaUserRepository(),
             new PasswordService(),
-            new TokenService()
+            new TokenService(),
+            new RedisService()
         )
     )
     app.post('/signup', async (req, res) => authController.signUp(req, res))

@@ -15,13 +15,6 @@ export class AuthController {
 
     async signUp(req: FastifyRequestType, res: FastifyReply) {
         const createUserDto: CreateUserDto = req.body as CreateUserDto
-        const redis = new RedisService()
-
-        await redis.set('user', 'id', 'EX', 120)
-
-        const t = redis.get('user')
-
-        console.log(t)
 
         const userTokenOrError = await this.userService.signUp(createUserDto)
 

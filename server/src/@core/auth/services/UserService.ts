@@ -1,3 +1,4 @@
+import { CacheService } from '../../cache/ChaceService'
 import { Result } from '../../error/Result'
 import { AuthErrors } from '../../error/types/AuthErrors'
 import { AuthResponseDto } from '../dtos/AuthResponseDto'
@@ -13,15 +14,18 @@ export class UserService implements IUserService {
     private readonly userRepository: UserRepository
     private readonly passwordService: IPasswordService
     private readonly tokenService: ITokenService
+    private readonly cacheService: CacheService
 
     constructor(
         userRepository: UserRepository,
         passwordService: IPasswordService,
-        tokenService: ITokenService
+        tokenService: ITokenService,
+        cacheService: CacheService
     ) {
         this.userRepository = userRepository
         this.passwordService = passwordService
         this.tokenService = tokenService
+        this.cacheService = cacheService
     }
     async signIn(
         signInDto: SignInDto
@@ -40,6 +44,22 @@ export class UserService implements IUserService {
         if (!isPasswordMatch)
             return Result.fail<AuthResponseDto>('Senha incorreta')
 
+        const isLogged = await this.cacheService.get(user.id)
+
+        if (isLogged)
+            return Result.fail<AuthResponseDto>(
+                'Um usuário já está utilizando esta conta'
+            )
+
+        await this.cacheService.set(
+            user!.id,
+            JSON.stringify({
+                id: user!.id,
+                login: user!.login,
+            }),
+            'EX',
+            1800
+        )
         const token = this.tokenService.genToken(user.id, user.login)
 
         return Result.ok<AuthResponseDto>({ token })
@@ -60,6 +80,15 @@ export class UserService implements IUserService {
 
         user = await this.userRepository.saveUser(createUserDto)
 
+        await this.cacheService.set(
+            user!.id,
+            JSON.stringify({
+                id: user!.id,
+                login: user!.login,
+            }),
+            'EX',
+            18000
+        )
         const token = this.tokenService.genToken(user!.id, user!.login)
 
         return Result.ok<AuthResponseDto>({ token })
