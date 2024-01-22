@@ -1,10 +1,6 @@
 import { Button } from "../Button";
 
-export default function GenerateQrCode({
-    handleClick,
-}: {
-    handleClick: () => void;
-}) {
+export function GenerateQrCode({ handleClick }: { handleClick: () => void }) {
     return (
         <div className="flex bg-green-dark h-[12rem] w-[30rem] rounded-lg items-center justify-center mr-72">
             <Button
