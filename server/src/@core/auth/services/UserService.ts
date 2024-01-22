@@ -80,15 +80,6 @@ export class UserService implements IUserService {
 
         user = await this.userRepository.saveUser(createUserDto)
 
-        await this.cacheService.set(
-            user!.id,
-            JSON.stringify({
-                id: user!.id,
-                login: user!.login,
-            }),
-            'EX',
-            18000
-        )
         const token = this.tokenService.genToken(user!.id, user!.login)
 
         return Result.ok<AuthResponseDto>({ token })

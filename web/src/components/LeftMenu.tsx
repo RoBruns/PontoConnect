@@ -1,4 +1,4 @@
-import { Button, variants} from "./Button";
+import { Button, variants } from "./Button";
 import { CiLogout } from "react-icons/ci";
 
 type LeftMenuProps = {
@@ -8,10 +8,9 @@ type LeftMenuProps = {
 };
 
 export default function LeftMenu({
-    whatsappVariant = 'primary', // valor padrão é 'primary'
-    disparoVariant = 'secondary', 
-    esquentaVariant = 'secondary', 
-
+    whatsappVariant = "primary", // valor padrão é 'primary'
+    disparoVariant = "secondary",
+    esquentaVariant = "secondary",
 }: LeftMenuProps) {
     return (
         <section className="w-[20rem] flex-grow bg-[#1E1E1E] rounded-lg flex flex-col justify-between font-sans z-0">
