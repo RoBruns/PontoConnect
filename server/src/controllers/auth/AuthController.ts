@@ -4,6 +4,7 @@ import { FastifyRequestType } from 'fastify/types/type-provider'
 import { CreateUserDto } from '../../@core/auth/dtos/CreateUserDto'
 import { SignInDto } from '../../@core/auth/dtos/SiginDto'
 import { authErrorStatusMap } from './authErrorStatusMap'
+import { RedisService } from '../../@core/cache/RedisService'
 
 export class AuthController {
     private readonly userService: IUserService
@@ -14,6 +15,13 @@ export class AuthController {
 
     async signUp(req: FastifyRequestType, res: FastifyReply) {
         const createUserDto: CreateUserDto = req.body as CreateUserDto
+        const redis = new RedisService()
+
+        await redis.set('user', 'id', 'EX', 120)
+
+        const t = redis.get('user')
+
+        console.log(t)
 
         const userTokenOrError = await this.userService.signUp(createUserDto)
 

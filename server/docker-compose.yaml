@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+    postgres:
+        image: postgres
+        ports: 
+            - "5432:5432"
+        environment:
+            POSTGRES_DB: zapbot
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: 12345
+    redis:
+        image: redis:latest
+        command:
+            [
+                'redis-server',
+                '--bind',
+                'redis',
+                '--port',
+                '6379',
+                '--requirepass',
+                'asopdkq1qpk',
+            ]
+        ports:
+            - 6379:6379
+        volumes:
+            - cache:/cache
+        deploy:
+            resources:
+                limits:
+                    memory: '0.5GB'
+volumes:
+    cache:
