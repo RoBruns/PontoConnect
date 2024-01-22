@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_Gurmukhi, Kanit } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header/Header";
+
 
 const notoSans = Noto_Sans_Gurmukhi({
     subsets: ["latin"],
@@ -15,7 +15,7 @@ const kanit = Kanit({
 });
 
 export const metadata: Metadata = {
-    title: "Login - ZapBot",
+    title: " - ZapBot",
     description: "Login to ZapBot",
 };
 
@@ -28,10 +28,7 @@ export default function RootLayout({
         <html lang="pt-BR" className="h-full w-full">
             <body className={`${notoSans.variable} ${kanit.variable} font-sans bg-green-verydark w-full h-full`}>
                 <div className="flex flex-col h-screen">
-                    <Header />
-                    <main className="flex-grow overflow-auto">
                         {children}
-                    </main>
                 </div>
             </body>
         </html>

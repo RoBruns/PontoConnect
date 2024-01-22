@@ -4,10 +4,16 @@ import logo from "../../../public/logo.svg";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-export default function Header() {
+type HeaderProps = {
+    varFeatName: string;
+};
+
+export default function Header({ varFeatName }: HeaderProps) {
     const pathname = usePathname();
 
     const isNotLoginPage = pathname !== "/login";
+
+    let featName = varFeatName;
 
     return (
         <header>
@@ -19,7 +25,7 @@ export default function Header() {
                     <div className="w-full flex items-center justify-between">
                         <div></div>
                         <h1 className="font-logo text-4xl text-white">
-                            Conectar WhatsApp
+                            {featName}
                         </h1>
                         <p className="font-sans text-white">
                             Usuário | Id: 00001
