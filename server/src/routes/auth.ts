@@ -11,10 +11,11 @@ export async function authRoutes(app: FastifyInstance) {
         new UserService(
             new PrismaUserRepository(),
             new PasswordService(),
-            new TokenService(),
+            new TokenService(new RedisService()),
             new RedisService()
         )
     )
     app.post('/signup', async (req, res) => authController.signUp(req, res))
     app.post('/signin', async (req, res) => authController.signIn(req, res))
+    app.post('/signout', async (req, res) => authController.signOut(req, res))
 }

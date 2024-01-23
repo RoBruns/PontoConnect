@@ -1,7 +1,7 @@
 export class SignOutDTO {
-    token: string
+    authorization: string
 
-    constructor(token: string) {
-        this.token = token
+    constructor(authorization: string) {
+        this.authorization = authorization
     }
 }

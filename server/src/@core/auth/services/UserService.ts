@@ -1,9 +1,11 @@
+import { StringAsNumber } from 'fastify/types/utils'
 import { CacheService } from '../../cache/ChaceService'
 import { Result } from '../../error/Result'
 import { AuthErrors } from '../../error/types/AuthErrors'
 import { AuthResponseDto } from '../dtos/AuthResponseDto'
 import { CreateUserDto } from '../dtos/CreateUserDto'
 import { SignInDto } from '../dtos/SiginDto'
+import { SignOutDTO } from '../dtos/SignOutDTO'
 import { IUserService } from '../model/IUserService'
 import { User } from '../model/User'
 import { UserRepository } from '../model/UserRepository'
@@ -88,13 +90,15 @@ export class UserService implements IUserService {
         return Result.ok<AuthResponseDto>({ token })
     }
 
-    async signOut(token: string): Promise<Result<void | AuthErrors>> {
-        const { id } = this.tokenService.getTokenData(token) as {
+    async signOut(signOutDTO: SignOutDTO): Promise<Result<void>> {
+        let { authorization } = signOutDTO
+
+        authorization = authorization.replace('Bearer ', '')
+
+        const { id } = this.tokenService.getTokenData(authorization) as {
             id: string
             login: string
         }
-
-        await this.cacheService.set(token, 'invalid', 'EX', 60 * 60 * 24)
 
         await this.cacheService.del(id)
 

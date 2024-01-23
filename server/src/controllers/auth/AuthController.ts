@@ -49,9 +49,9 @@ export class AuthController {
     }
 
     async signOut(req: FastifyRequestType, res: FastifyReply) {
-        const { token } = req.headers as SignOutDTO
+        const signOutDTO = req.headers as SignOutDTO
 
-        const userTokenOrError = await this.userService.signOut(token as string)
+        const userTokenOrError = await this.userService.signOut(signOutDTO)
 
         if (userTokenOrError.error) {
             const { error } = userTokenOrError
